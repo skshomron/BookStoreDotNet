@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookFair", "BookFair.csproj", "{FC927F47-32B8-413B-9141-5AF192D33109}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{8010F6B8-C831-4894-9CCB-3521A003D4E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{8444C201-1510-4FB8-82C0-D8F39267F3BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{FC927F47-32B8-413B-9141-5AF192D33109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC927F47-32B8-413B-9141-5AF192D33109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC927F47-32B8-413B-9141-5AF192D33109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8010F6B8-C831-4894-9CCB-3521A003D4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8010F6B8-C831-4894-9CCB-3521A003D4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8010F6B8-C831-4894-9CCB-3521A003D4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8010F6B8-C831-4894-9CCB-3521A003D4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8444C201-1510-4FB8-82C0-D8F39267F3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8444C201-1510-4FB8-82C0-D8F39267F3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8444C201-1510-4FB8-82C0-D8F39267F3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8444C201-1510-4FB8-82C0-D8F39267F3BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

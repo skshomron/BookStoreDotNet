@@ -1,7 +1,8 @@
-﻿namespace BookFair
+﻿namespace BookFair.Models
 {
 
-    public class Author: NotifiableObject {
+    public class Author : NotifiableObject
+    {
 
 
         private string _firstName;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BookFair
+namespace BookFair.Models
 {
     public class NotifiableObject : INotifyPropertyChanged
     {

@@ -1,11 +1,12 @@
 ﻿using BookFair.Commands;
+using BookFair.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace BookFair
+namespace BookFair.Viewmodels
 {
-    public class Album:NotifiableObject
+    public class AlbumVm : NotifiableObject
     {
 
         private ICommand _nextCmd;
@@ -16,7 +17,7 @@ namespace BookFair
         }
         private bool NextCmdCanExecute(object obj)
         {
-            return SelectedIndex.HasValue && SelectedIndex.Value < ImagePathes.Count-1;
+            return SelectedIndex.HasValue && SelectedIndex.Value < ImagePathes.Count - 1;
         }
 
 
@@ -81,15 +82,15 @@ namespace BookFair
             }
             else
             {
-                SelectedIndex = (int?)null;
+                SelectedIndex = null;
             }
         }
-        public Album(IEnumerable<string> imagePathes)
+        public AlbumVm(IEnumerable<string> imagePathes)
         {
             ImagePathes = imagePathes != null ?
                                         new ObservableCollection<string>(imagePathes) :
-                                        new ObservableCollection<string>( new[]{ @"C:\Users\sksph\Dropbox\Photos\Sample Album\Costa Rican Frog.jpg",@"C:\Users\sksph\Dropbox\Photos\Sample Album\Boston City Flow.jpg" });
-            SelectedIndex = ImagePathes.Count > 0 ? 0 : (int?) null;
+                                        new ObservableCollection<string>(new[] { @"C:\Users\sksph\Dropbox\Photos\Sample Album\Costa Rican Frog.jpg", @"C:\Users\sksph\Dropbox\Photos\Sample Album\Boston City Flow.jpg" });
+            SelectedIndex = ImagePathes.Count > 0 ? 0 : (int?)null;
         }
 
 

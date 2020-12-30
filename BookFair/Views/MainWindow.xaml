@@ -1,14 +1,16 @@
-﻿<Window x:Class="BookFair.MainWindow"
+﻿<Window x:Class="BookFair.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BookFair"
+        xmlns:vm="clr-namespace:BookFair.Viewmodels"
+        xmlns:model="clr-namespace:BookFair.Models"
+        xmlns:control="clr-namespace:BookFair.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        d:DataContext="{d:DesignInstance d:Type=local:BooksManager}">
+        d:DataContext="{d:DesignInstance d:Type=vm:BooksManagerVm}">
     <Window.Resources>
-        <DataTemplate x:Key="BookTemplate" DataType="{x:Type local:Book}">
+        <DataTemplate x:Key="BookTemplate" DataType="{x:Type model:Book}">
             <DockPanel LastChildFill="True">
                 <StackPanel DockPanel.Dock="Right" Margin="1">
                     <TextBlock  FontSize="14" Text="{Binding Price, StringFormat={}{0:c}}" Margin="1"/>
@@ -17,8 +19,8 @@
                 <Image Source="{Binding Album.SelectedImagePath, Mode=OneTime}" Margin="1" MaxHeight="40" MaxWidth="40"/>
             </DockPanel>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type local:Book}" >
-            <local:DetailedBookView/>
+        <DataTemplate DataType="{x:Type model:Book}" >
+            <control:DetailedBookControl/>
         </DataTemplate>
     </Window.Resources>
     <DockPanel LastChildFill="True">
@@ -34,5 +36,6 @@
         </ToolBar>
         <ListBox DockPanel.Dock="Left" ItemsSource="{Binding Books}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding SelectedBook, Mode=TwoWay}" MinWidth="200" ItemTemplate="{StaticResource BookTemplate}"/>
         <ContentControl Content="{Binding SelectedBook}" />
+        <control:ConnectionControl DockPanel.Dock="Bottom"/>
     </DockPanel>
 </Window>

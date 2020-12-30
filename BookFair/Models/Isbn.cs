@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-namespace BookFair
+namespace BookFair.Models
 {
     delegate Isbn CreateIsbnDelegate(string code);
     public interface IIsbnBuilder
     {
-        
+
     }
     public class ISBNFactory
     {
-      
+
         public static bool TryParse(string code, out Isbn isbn)
         {
             isbn = null;
-            if(code.Length == Isbn10.ISBN_10_LENGTH)
+            if (code.Length == Isbn10.ISBN_10_LENGTH)
             {
                 isbn = null;
             }
@@ -26,7 +26,7 @@ namespace BookFair
 
     public abstract class Isbn
     {
-        protected int[] _digits;       
+        protected int[] _digits;
         protected abstract int[] GetISBNDigitfromString(string code);
         public abstract int GetISBNDigitLength();
         public abstract Isbn Create(string code);
@@ -104,7 +104,7 @@ namespace BookFair
             }
             return s % 11 == 0;
         }
-                
+
         protected override int[] GetISBNDigitfromString(string code)
         {
             var isbnInt = new int[ISBN_10_LENGTH];

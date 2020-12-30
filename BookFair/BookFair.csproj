@@ -56,48 +56,60 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Page Include="AlbumView.xaml">
+    <Page Include="Controls\AlbumView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BookView.xaml">
+    <Page Include="Controls\BookControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DetailedBookView.xaml">
+    <Page Include="Controls\ConnectionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Controls\DetailedBookControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\baseDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Album.cs" />
-    <Compile Include="AlbumView.xaml.cs">
+    <Compile Include="Controls\ConnectionControl.xaml.cs">
+      <DependentUpon>ConnectionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Viewmodels\AlbumVm.cs" />
+    <Compile Include="Controls\AlbumView.xaml.cs">
       <DependentUpon>AlbumView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Author.cs" />
-    <Compile Include="Book.cs" />
-    <Compile Include="BooksManager.cs" />
-    <Compile Include="BookView.xaml.cs">
-      <DependentUpon>BookView.xaml</DependentUpon>
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Viewmodels\BooksManagerVm.cs" />
+    <Compile Include="Controls\BookControl.xaml.cs">
+      <DependentUpon>BookControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DetailedBookView.xaml.cs">
-      <DependentUpon>DetailedBookView.xaml</DependentUpon>
+    <Compile Include="Controls\DetailedBookControl.xaml.cs">
+      <DependentUpon>DetailedBookControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Isbn.cs" />
-    <Compile Include="MainViewModel.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Models\Isbn.cs" />
+    <Compile Include="Viewmodels\ConnectionVm.cs" />
+    <Compile Include="Viewmodels\MainVm.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NotifiableObject.cs" />
+    <Compile Include="Models\NotifiableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -123,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ioc\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

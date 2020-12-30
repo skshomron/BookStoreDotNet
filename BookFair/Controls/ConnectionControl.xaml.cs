@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BookFair
+namespace BookFair.Controls
 {
     /// <summary>
-    /// Interaction logic for BookView.xaml
+    /// Interaction logic for ConnectionControl.xaml
     /// </summary>
-    public partial class BookView : UserControl
+    public partial class ConnectionControl : UserControl
     {
-        public BookView()
+        public ConnectionControl()
         {
             InitializeComponent();
         }

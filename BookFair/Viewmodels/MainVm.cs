@@ -1,12 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using BookFair.Models;
+using System.Collections.ObjectModel;
 
-namespace BookFair
+namespace BookFair.Viewmodels
 {
     public interface IViewModel
     {
 
     }
-    public class MainViewModel:NotifiableObject
+    public class MainVm : NotifiableObject
     {
 
         private IViewModel _selectedVm;
@@ -38,10 +39,10 @@ namespace BookFair
             }
         }
 
-        public MainViewModel()
+        public MainVm()
         {
             _viewModels = new ObservableCollection<IViewModel>();
-            _viewModels.Add(new BooksManager());
+            _viewModels.Add(new BooksManagerVm());
             SelectedVm = _viewModels[0];
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BookFair.Commands;
+using BookFair.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace BookFair
+namespace BookFair.Viewmodels
 {
-    public class BooksManager : NotifiableObject, IViewModel
+    public class BooksManagerVm : NotifiableObject, IViewModel
     {
         private ICommand _deleteBookCmd;
         public ICommand DeleteBookCmd => _deleteBookCmd ?? (_deleteBookCmd = new RelayCommand(DeleteBookExecute, DeleteBookCanExecute));
 
         private ICommand _createBookCmd;
-        public ICommand CreateBookCmd => _createBookCmd ?? (_createBookCmd = new RelayCommand(CreateBookExecute,CreateBookCanExecute));
+        public ICommand CreateBookCmd => _createBookCmd ?? (_createBookCmd = new RelayCommand(CreateBookExecute, CreateBookCanExecute));
 
         private ObservableCollection<Book> _books;
         public ObservableCollection<Book> Books
@@ -45,7 +46,7 @@ namespace BookFair
             }
         }
 
-        public BooksManager()
+        public BooksManagerVm()
         {
             Books = new ObservableCollection<Book>();
         }
@@ -71,7 +72,7 @@ namespace BookFair
             var book = obj as Book;
             var index = Books.IndexOf(book);
             Books.Remove(book);
-            SelectedBook = Books.Count>index? Books[index]: Books.Count==0?null:Books[index-1];
+            SelectedBook = Books.Count > index ? Books[index] : Books.Count == 0 ? null : Books[index - 1];
         }
     }
 }

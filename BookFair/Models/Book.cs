@@ -1,6 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using BookFair.Viewmodels;
+using System.Collections.ObjectModel;
 
-namespace BookFair
+namespace BookFair.Models
 {
 
     public enum BookState
@@ -20,9 +21,9 @@ namespace BookFair
         Deleted
     }
     public class Book : NotifiableObject
-    {        
-        private string  _title;
-        public string  Title
+    {
+        private string _title;
+        public string Title
         {
             get { return _title; }
             set
@@ -93,8 +94,8 @@ namespace BookFair
         }
 
 
-        private Album _album;
-        public Album Album
+        private AlbumVm _album;
+        public AlbumVm Album
         {
             get { return _album; }
             set
@@ -105,7 +106,7 @@ namespace BookFair
                     RaisePropertyChanged(nameof(Album));
                 }
             }
-        }        
+        }
 
         private ObservableCollection<Author> _authors;
         public ObservableCollection<Author> Authors
@@ -122,8 +123,8 @@ namespace BookFair
         }
 
 
-        private string  _isbn;
-        public string  Isbn
+        private string _isbn;
+        public string Isbn
         {
             get { return _isbn; }
             set
@@ -152,7 +153,7 @@ namespace BookFair
 
         public Book()
         {
-            Album = new Album(null);
+            Album = new AlbumVm(null);
         }
     }
 }
