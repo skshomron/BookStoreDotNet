@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace DAL
 {
-    public class BookfairModel : DbContext
+    public class BookFairContext : DbContext
     {
         // Your context has been configured to use a 'BookfairModel' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -14,7 +14,7 @@ namespace DAL
         // 
         // If you wish to target a different database and/or database provider, modify the 'BookfairModel' 
         // connection string in the application configuration file.
-        public BookfairModel()
+        public BookFairContext()
             : base("name=BookfairModel")
         {
         }

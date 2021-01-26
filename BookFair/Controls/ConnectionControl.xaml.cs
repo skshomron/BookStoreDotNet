@@ -24,5 +24,14 @@ namespace BookFair.Controls
         {
             InitializeComponent();
         }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var ctl = sender as UserControl;
+            if(ctl!=null)
+            {
+                //var vm = ctl.DataContext as ConnectionViewModel;
+            }
+        }
     }
 }

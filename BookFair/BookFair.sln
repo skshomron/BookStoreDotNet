@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{8444C201-1510-4FB8-82C0-D8F39267F3BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppBookFair", "..\ConsoleAppBookFair\ConsoleAppBookFair.csproj", "{AE3B7E08-32BA-472F-80D7-B6D4FF36AF67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookFairService", "..\BookFairService\BookFairService.csproj", "{D8243804-ED68-49BF-BB8C-0BAB9EA651FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookFairRepositories", "..\BookFairRepositories\BookFairRepositories.csproj", "{2C3A5082-16F6-4F5F-9C10-A2F313A84FCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookFairIoc", "..\BookFairIoc\BookFairIoc.csproj", "{2F836922-9D90-4035-AD00-3C01E73FF8D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +35,22 @@ Global
 		{8444C201-1510-4FB8-82C0-D8F39267F3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8444C201-1510-4FB8-82C0-D8F39267F3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8444C201-1510-4FB8-82C0-D8F39267F3BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE3B7E08-32BA-472F-80D7-B6D4FF36AF67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE3B7E08-32BA-472F-80D7-B6D4FF36AF67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE3B7E08-32BA-472F-80D7-B6D4FF36AF67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE3B7E08-32BA-472F-80D7-B6D4FF36AF67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8243804-ED68-49BF-BB8C-0BAB9EA651FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8243804-ED68-49BF-BB8C-0BAB9EA651FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8243804-ED68-49BF-BB8C-0BAB9EA651FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8243804-ED68-49BF-BB8C-0BAB9EA651FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3A5082-16F6-4F5F-9C10-A2F313A84FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3A5082-16F6-4F5F-9C10-A2F313A84FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3A5082-16F6-4F5F-9C10-A2F313A84FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3A5082-16F6-4F5F-9C10-A2F313A84FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F836922-9D90-4035-AD00-3C01E73FF8D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F836922-9D90-4035-AD00-3C01E73FF8D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F836922-9D90-4035-AD00-3C01E73FF8D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F836922-9D90-4035-AD00-3C01E73FF8D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

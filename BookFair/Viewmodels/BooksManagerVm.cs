@@ -1,4 +1,5 @@
 ﻿using BookFair.Commands;
+using BookFair.Interfaces;
 using BookFair.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 
 namespace BookFair.Viewmodels
 {
-    public class BooksManagerVm : NotifiableObject, IViewModel
+    public class BooksManagerVm : ViewModelBase
     {
         private ICommand _deleteBookCmd;
         public ICommand DeleteBookCmd => _deleteBookCmd ?? (_deleteBookCmd = new RelayCommand(DeleteBookExecute, DeleteBookCanExecute));

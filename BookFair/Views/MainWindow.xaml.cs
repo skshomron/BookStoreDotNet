@@ -8,11 +8,9 @@ namespace BookFair.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        public BooksManagerVm BookManager { get; set; }
         public MainWindow()
         {
-            DataContext = new BooksManagerVm();            
+            DataContext = new MainVm();            
             InitializeComponent();
         }
     }

@@ -8,7 +8,7 @@
         xmlns:control="clr-namespace:BookFair.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        d:DataContext="{d:DesignInstance d:Type=vm:BooksManagerVm}">
+        d:DataContext="{d:DesignInstance d:Type=vm:MainVm}">
     <Window.Resources>
         <DataTemplate x:Key="BookTemplate" DataType="{x:Type model:Book}">
             <DockPanel LastChildFill="True">
@@ -34,8 +34,6 @@
         <ToolBar DockPanel.Dock="Top">
             <Button Command="{Binding CreateBookCmd}">New Book</Button>
         </ToolBar>
-        <ListBox DockPanel.Dock="Left" ItemsSource="{Binding Books}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding SelectedBook, Mode=TwoWay}" MinWidth="200" ItemTemplate="{StaticResource BookTemplate}"/>
-        <ContentControl Content="{Binding SelectedBook}" />
-        <control:ConnectionControl DockPanel.Dock="Bottom"/>
+        <ContentControl Content="{Binding SelectedVm}" />
     </DockPanel>
 </Window>

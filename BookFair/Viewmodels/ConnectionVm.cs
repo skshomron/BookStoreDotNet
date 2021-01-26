@@ -1,16 +1,37 @@
-﻿using BookFair.Commands;
-using BookFair.Models;
+﻿using BookFair.BookFairService;
+using BookFair.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BookFair.Viewmodels
 {
-    public class ConnectionVm:NotifiableObject
+    public class EventArgs<T> : EventArgs
     {
+        public T Param { get; }
+        public EventArgs(T param)
+        {
+            Param = param;
+        }
+    }
+    public delegate void ConnectionChangedDelegate(object sender, EventArgs<bool> e  ); 
+    public class ConnectionVm: ViewModelBase
+    {
+        public event ConnectionChangedDelegate ConnectionChanged;
+        private bool _isConnected;
+        public bool IsConnected
+        {
+            get { return _isConnected; }
+            set
+            {
+                if (_isConnected != value)
+                {
+                    _isConnected = value;
+                    RaisePropertyChanged(nameof(IsConnected));
+                    
+                    ConnectionChanged?.Invoke(this, new EventArgs<bool>(value));
+                }
+            }
+        }
 
         private string _login;
         public string Login
@@ -26,7 +47,7 @@ namespace BookFair.Viewmodels
             }
         }
 
-        private string _password;
+        private string _password = "phenix_6";
         public string Password
         {
             get { return _password; }
@@ -42,8 +63,10 @@ namespace BookFair.Viewmodels
 
         private ICommand _connectCmd;
         public ICommand ConnectCmd => _connectCmd ?? (_connectCmd = new RelayCommand(ConnectCmdExecute, ConnectCmdCanExecute));
-        private void ConnectCmdExecute(object obj)
+        private async void ConnectCmdExecute(object obj)
         {
+            var client = new ServiceClient();
+            IsConnected = await client.ConnectAsync(Login, Password);
             
         }
         private bool ConnectCmdCanExecute(object obj)

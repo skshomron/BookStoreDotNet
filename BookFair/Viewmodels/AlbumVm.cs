@@ -1,4 +1,5 @@
 ﻿using BookFair.Commands;
+using BookFair.Interfaces;
 using BookFair.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,7 +7,7 @@ using System.Windows.Input;
 
 namespace BookFair.Viewmodels
 {
-    public class AlbumVm : NotifiableObject
+    public class AlbumVm :ViewModelBase
     {
 
         private ICommand _nextCmd;

@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookfairModel.cs" />
+    <Compile Include="BookFairContext.cs" />
     <Compile Include="Migrations\202012290532097_InitialCreate.cs" />
     <Compile Include="Migrations\202012290532097_InitialCreate.Designer.cs">
       <DependentUpon>202012290532097_InitialCreate.cs</DependentUpon>

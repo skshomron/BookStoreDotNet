@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BookFairModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BF_Books">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PublishYear" Type="smallint" Nullable="false" />
+          <Property Name="ISBN" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Cover" Type="varchar" MaxLength="100" />
+          <Property Name="State" Type="tinyint" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="BF_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsMale" Type="bit" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Avatar" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HasReadTermsConditions" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Book_User">
+          <End Role="BF_Users" Type="Self.BF_Users" Multiplicity="1" />
+          <End Role="BF_Books" Type="Self.BF_Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BF_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BF_Books">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="InsertBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+          <Parameter Name="PublishYear" Type="smallint" Mode="In" />
+          <Parameter Name="ISBN" Type="varchar" Mode="In" />
+          <Parameter Name="Price" Type="int" Mode="In" />
+          <Parameter Name="IdUser" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Cover" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="tinyint" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="IsMale" Type="bit" Mode="In" />
+          <Parameter Name="Birthday" Type="datetime" Mode="In" />
+          <Parameter Name="Login" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Avatar" Type="varchar" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="HasReadTermsConditions" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="BookFairModelStoreContainer">
+          <EntitySet Name="BF_Books" EntityType="Self.BF_Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BF_Users" EntityType="Self.BF_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
+            <End Role="BF_Users" EntitySet="BF_Users" />
+            <End Role="BF_Books" EntitySet="BF_Books" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookFairModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BF_Books">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PublishYear" Type="Int16" Nullable="false" />
+          <Property Name="ISBN" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Guid" Nullable="false" />
+          <Property Name="Cover" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="Byte" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Book_User" FromRole="BF_Books" ToRole="BF_Users" />
+        </EntityType>
+        <EntityType Name="BF_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsMale" Type="Boolean" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Login" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HasReadTermsConditions" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Book_User" FromRole="BF_Users" ToRole="BF_Books" />
+        </EntityType>
+        <Association Name="FK_Book_User">
+          <End Role="BF_Users" Type="Self.BF_Users" Multiplicity="1" />
+          <End Role="BF_Books" Type="Self.BF_Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BF_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BF_Books">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookFairEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Self.BF_Books" />
+          <EntitySet Name="Users" EntityType="Self.BF_Users" />
+          <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
+            <End Role="BF_Users" EntitySet="Users" />
+            <End Role="BF_Books" EntitySet="Books" />
+          </AssociationSet>
+          <FunctionImport Name="InsertBook">
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="PublishYear" Mode="In" Type="Int16" />
+            <Parameter Name="ISBN" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Int32" />
+            <Parameter Name="IdUser" Mode="In" Type="Guid" />
+            <Parameter Name="Cover" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="Byte" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="InsertUser">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="IsMale" Mode="In" Type="Boolean" />
+            <Parameter Name="Birthday" Mode="In" Type="DateTime" />
+            <Parameter Name="Login" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Avatar" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="HasReadTermsConditions" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookFairModelStoreContainer" CdmEntityContainer="BookFairEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BookFairModel.BF_Books">
+              <MappingFragment StoreEntitySet="BF_Books">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PublishYear" ColumnName="PublishYear" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BookFairModel.BF_Books">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BookFairModel.Store.InsertBook">
+                  <ScalarProperty Name="PublishYear" ParameterName="PublishYear" />
+                  <ScalarProperty Name="Status" ParameterName="Status" />
+                  <ScalarProperty Name="State" ParameterName="State" />
+                  <ScalarProperty Name="Cover" ParameterName="Cover" />
+                  <ScalarProperty Name="IdUser" ParameterName="IdUser" />
+                  <ScalarProperty Name="Price" ParameterName="Price" />
+                  <ScalarProperty Name="ISBN" ParameterName="ISBN" />
+                  <ScalarProperty Name="Title" ParameterName="Title" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BookFairModel.BF_Users">
+              <MappingFragment StoreEntitySet="BF_Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsMale" ColumnName="IsMale" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="HasReadTermsConditions" ColumnName="HasReadTermsConditions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="BookFairModel.BF_Users">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="BookFairModel.Store.InsertUser">
+                  <ScalarProperty Name="HasReadTermsConditions" ParameterName="HasReadTermsConditions" />
+                  <ScalarProperty Name="Phone" ParameterName="Phone" />
+                  <ScalarProperty Name="Avatar" ParameterName="Avatar" />
+                  <ScalarProperty Name="Password" ParameterName="Password" />
+                  <ScalarProperty Name="Login" ParameterName="Login" />
+                  <ScalarProperty Name="Birthday" ParameterName="Birthday" />
+                  <ScalarProperty Name="IsMale" ParameterName="IsMale" />
+                  <ScalarProperty Name="Email" ParameterName="Email" />
+                  <ScalarProperty Name="LastName" ParameterName="LastName" />
+                  <ScalarProperty Name="FirstName" ParameterName="FirstName" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertBook" FunctionName="BookFairModel.Store.InsertBook" />
+          <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="BookFairModel.Store.InsertUser" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

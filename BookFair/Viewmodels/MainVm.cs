@@ -1,13 +1,10 @@
-﻿using BookFair.Models;
+﻿using BookFair.Interfaces;
+using BookFair.Models;
 using System.Collections.ObjectModel;
 
 namespace BookFair.Viewmodels
 {
-    public interface IViewModel
-    {
-
-    }
-    public class MainVm : NotifiableObject
+    public class MainVm : ViewModelBase
     {
 
         private IViewModel _selectedVm;
@@ -38,12 +35,26 @@ namespace BookFair.Viewmodels
                 }
             }
         }
-
+        ConnectionVm _conVm = new ConnectionVm();
+        BooksManagerVm _bmVm = new BooksManagerVm();
         public MainVm()
         {
-            _viewModels = new ObservableCollection<IViewModel>();
-            _viewModels.Add(new BooksManagerVm());
+            
+            _viewModels = new ObservableCollection<IViewModel>
+            {
+                _conVm,_bmVm
+            };
             SelectedVm = _viewModels[0];
+
+            _conVm.ConnectionChanged += ConVm_ConnectionChanged;
+        }
+
+        private void ConVm_ConnectionChanged(object sender, EventArgs<bool> e)
+        {
+            if (e.Param)
+                SelectedVm = _bmVm;
+            else
+                SelectedVm = _conVm;
         }
     }
 }

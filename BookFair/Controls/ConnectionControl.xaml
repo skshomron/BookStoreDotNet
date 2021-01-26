@@ -3,32 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vms ="clr-namespace:BookFair.Viewmodels"
              xmlns:local="clr-namespace:BookFair.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="800">
-    <StackPanel>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+             d:DataContext="{d:DesignInstance Type={x:Type vms:ConnectionVm}}"
+             d:DesignHeight="100" d:DesignWidth="800">    
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" 
                        Grid.Column="0" 
                        Text="Login:" 
                        HorizontalAlignment="Right" 
-                       Margin="1"/>
-        <TextBox Grid.Row="0" 
+                       />
+            <TextBox Grid.Row="0" 
                  Grid.Column="1" 
                  Text="{Binding Login}" 
                  HorizontalAlignment="Stretch"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Password:" HorizontalAlignment="Right" Margin="1"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Login}" HorizontalAlignment="Stretch"/>
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Connect" HorizontalAlignment="Center" Margin="2"/>
-    </Grid>
-    </StackPanel>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Password:" HorizontalAlignment="Right" />
+            <PasswordBox Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Stretch" PasswordChanged="PasswordBox_PasswordChanged"/>
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Connect" HorizontalAlignment="Center" Command="{Binding ConnectCmd}"/>
+        </Grid>
 </UserControl>
